@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InvoiceCreater</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<div class="container">
+    <h2>InvoiceCreater</h2>
+<p>Free Tax Invoice Generator Software.</p>
+
+  <form method="POST">
+                    {% csrf_token %}
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Seller NAME :-</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="seller_name" name="seller_name" placeholder="Seller name">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Seller PHONE :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="seller_phone" name="seller_phone" placeholder="Seller Phone">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Seller ADDRESS :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="seller_address" name="seller_address" placeholder="Seller Address">
+      </div>
+    </div>
+
+<BR>
+
+        <div class="row">
+      <div class="col-25">
+        <label for="fname">Buyer NAME :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="buyer_name" name="buyer_name" placeholder="Buyer Name">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Buyer PHONE :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="buyer_phone" name="buyer_phone" placeholder="Buyer Phone">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Buyer ADDRESS :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="buyer_address" name="buyer_address" placeholder="Buyer Address">
+      </div>
+    </div>
+
+
+    <BR>
+    <h2>Item</h2>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Item :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="item" name="item1" placeholder="Item">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Price :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="price" name="price1" placeholder="Price">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Tax % :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="tax" name="tax1" placeholder="Tax ">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Quantity :</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="quantity1" name="quantity1" placeholder="Quantity">
+      </div>
+    </div>
+
+
+                   <div id="newRow"></div>
+
+
+        <div class="row">
+                    <button id="addRow" type="button" class="btn btn-info">Add Row</button>
+&nbsp; &nbsp;
+
+            <BR>
+            <input type="submit" target="_blank" value="Submit">
+    </div>
+
+
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        // add row
+        var i = 2;
+        $("#addRow").click(function () {
+            var html = '';
+
+        html += '<div id="inputFormRow">';
+
+
+        html += '<hr>'
+        html += '<h2>Item </h2>'
+
+
+        html += '<div class="row"><div class="col-25"><label for="fname">Item :</label></div>';
+        html += '<div class="col-75"><input type="text" id="quantity" name="item'+i+'" placeholder="Item "></div></div>';
+
+        html += '<div class="row"><div class="col-25"><label for="fname">Price :</label></div>';
+        html += '<div class="col-75"><input type="text" id="quantity" name="price'+i+'" placeholder="Price "></div></div>';
+
+        html += '<div class="row"><div class="col-25"><label for="fname">Tax % :</label></div>';
+        html += '<div class="col-75"><input type="text" id="quantity" name="tax'+i+'" placeholder="Tax "></div></div>';
+
+        html += '<div class="row"><div class="col-25"><label for="fname">Quantity :</label></div>';
+        html += '<div class="col-75"><input type="text" id="quantity" name="quantity'+i+'" placeholder="Quantity "></div></div>';
+                 i = i + 1;
+        html += '<input type="hidden" name="count" value ="'+i+'">';
+
+           html += '<div class="input-group-append">';
+            html += '<div class="container "><button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+            html += '&nbsp;<BR></div></div>';
+            html += '</div>';
+
+            $('#newRow').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeRow', function () {
+            $(this).closest('#inputFormRow').remove(); ;
+        });
+    </script>
+
+  </form>
+</div>
+
+</body>
+</html>

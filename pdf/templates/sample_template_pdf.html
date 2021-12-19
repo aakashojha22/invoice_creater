@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+
+    .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <div class="card" style="width: 24rem;">
+                  <div class="card-body">
+                  </div>
+                </div>
+            </div>
+            <div>
+            <h1>Invoice id: 001</h1>
+            <h2>Seller name: {{ seller_name }}</h2>
+            <h3>SellerAddress: {{ seller_address }}</h3>
+            <h4>SellerPhone No.: {{ seller_phone }}</h4>
+
+<hr>
+
+
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <address>
+                            <strong>{{ buyer_name }}</strong>
+                            <br>
+                            {{ buyer_address }}
+                            <br>
+                            <abbr title="Phone">Phone:</abbr> {{ buyer_phone }}
+                        </address>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em>Date:</em><p id="date">{{ date }}</p>
+          </p>
+                        <p>
+                            <em>Receipt #: 34522677W</em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Receipt</h1>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Product</th>
+                                <th class="text-center" >Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Tax</th>
+                                <th class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                {% for key in dic.items %}
+                                <tr>
+                                {% for key1 in key %}
+                                {% if  key1.item  %}
+
+                                <td class="col-md-9">{{ key1.item }}</td>
+                                <td class="col-md-1" style="text-align: center"> {{ key1.quantity }} </td>
+                                <td class="col-md-1" style="text-align: center">${{ key1.price }}</td>
+                                <td class="col-md-1" style="text-align: center">{{ key1.tax }}%</td>
+                                <td class="col-md-1" style="text-align: center">${{ key1.total }}</td>
+                                {% endif %}
+                                    {% endfor %}
+                                    </tr>
+                                 {% endfor %}
+
+
+                            <tr></tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+
+                                <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                                <td class="text-center text-danger"><h4><strong>${{total_amt}}</strong></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="button">
+                        Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

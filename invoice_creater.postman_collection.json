@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "e1e73d66-819f-48d3-bfdd-dbcfcff504ff",
+		"name": "invoice_creater",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/v1/invoice_pdf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "seller_name",
+							"value": "Gayatri traders and printers",
+							"type": "text"
+						},
+						{
+							"key": "seller_phone",
+							"value": "741852960",
+							"type": "text"
+						},
+						{
+							"key": "seller_address",
+							"value": "Jamua waidhan singrauli, mp 486886",
+							"type": "text"
+						},
+						{
+							"key": "buyer_name",
+							"value": " Aakash ojha",
+							"type": "text"
+						},
+						{
+							"key": "buyer_phone",
+							"value": "7894561230",
+							"type": "text"
+						},
+						{
+							"key": "buyer_address",
+							"value": "New palasia indore mp 402001",
+							"type": "text"
+						},
+						{
+							"key": "count",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "item1",
+							"value": "peN",
+							"type": "text"
+						},
+						{
+							"key": "price1",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "tax1",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "quantity1",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "item2",
+							"value": "book",
+							"type": "text"
+						},
+						{
+							"key": "price2",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "tax2",
+							"value": "18",
+							"type": "text"
+						},
+						{
+							"key": "quantity2",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "item3",
+							"value": "bottle",
+							"type": "text"
+						},
+						{
+							"key": "price3",
+							"value": "110",
+							"type": "text"
+						},
+						{
+							"key": "tax3",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "quantity3",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/invoice_pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"invoice_pdf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
