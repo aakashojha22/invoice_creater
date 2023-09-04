@@ -2,7 +2,6 @@ import datetime
 from io import BytesIO
 from django.shortcuts import render
 
-# Create your views here.
 
 from io import StringIO
 
